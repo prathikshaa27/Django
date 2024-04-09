@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+
 # Create your views here.
 def home(request):
     return render(request,'home.html',{'name':'prathi'})
@@ -11,3 +12,4 @@ def add(request):
     final_result = first_value+second_value
 
     return render(request,"result.html",{'result':final_result})
+
