@@ -2,5 +2,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('',views.feedback,name="feedback")
+    path('contact/',views.contact_view,name='contact')
 ]

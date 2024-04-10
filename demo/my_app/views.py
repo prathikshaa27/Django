@@ -13,3 +13,6 @@ def add(request):
 
     return render(request,"result.html",{'result':final_result})
 
+def index(request):
+   print(request.headers)
+ 

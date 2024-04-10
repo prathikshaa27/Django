@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "articles",
     "forms"
+    
 
 ]
 
@@ -51,6 +52,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "my_app.middleware.CustomMiddleware",
+    "my_app.logger.LoggingMiddleware",
 ]
 
 ROOT_URLCONF = "demo.urls"
