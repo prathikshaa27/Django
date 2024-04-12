@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import JsonResponse
 
 
 # Create your views here.
@@ -15,4 +16,21 @@ def add(request):
 
 def index(request):
    print(request.headers)
- 
+
+def new_view(request):
+    response = HttpResponse("Prathi", content_type='text/plain',status=200)
+    response['X-My-header']='New value'
+    content_type=response['Content-Type']
+
+    contains_content_type=response.has_header('Content-Type')
+    headers =response.items()
+    response.setdefault('Content-Type', 'text/html')
+    response.set_cookie('user-id','123',max_age=85)
+    #return response
+
+data = {
+    "Name":"Prathi",
+    'status':"success"
+}
+response = JsonResponse(data)
+

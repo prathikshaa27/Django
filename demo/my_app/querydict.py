@@ -1,5 +1,6 @@
 import os
 from django.conf import settings
+from django.http import HttpResponse
 settings.configure()
 
 
@@ -23,3 +24,13 @@ print('a' in query_dict)
 
 to_set_default = query_dict.get('s','default')
 print(to_set_default)
+
+
+#HTTP response
+response = HttpResponse()
+response['Name']='prathi'
+print(response)
+print("Name" in response)
+#del response['Name']
+#print("Name" in response)
+
