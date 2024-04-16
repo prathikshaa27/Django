@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Template practice</title>
+    </head>
+    <body>
+        {% if username %}
+        <p>Hello, {{username}}</p>
+        {% else %}
+        <p>You are not logged in</p>
+        {% endif %}
+        {{username|capfirst}}
+        <p>{{10|add:5}}</p>
+        <p>{{'Iam going to a shop'|center:10}}</p>
+        <p>{{'prathi'|cut:"ra"}}</p>
+        <p>{{value|default:"this will be a default value"}}</p>
+        {% if  9|divisibleby:3 %}
+        {{9}} is divisile by 3
+        {% endif %}
+        <br>
+
+        {{'prathi'|escape}}
+        {{'prathi'|escapejs}}
+        {{new_list|first}}
+        {{11.1|floatformat:1}}
+        {{112|get_digit:1}}
+        {{new_dict|dictsort:"name"}}
+        
+
+
+
+       
+        
+
+    </body>
+</html>

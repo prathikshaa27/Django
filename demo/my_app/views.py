@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -17,20 +18,12 @@ def add(request):
 def index(request):
    print(request.headers)
 
-def new_view(request):
-    response = HttpResponse("Prathi", content_type='text/plain',status=200)
-    response['X-My-header']='New value'
-    content_type=response['Content-Type']
-
-    contains_content_type=response.has_header('Content-Type')
-    headers =response.items()
-    response.setdefault('Content-Type', 'text/html')
-    response.set_cookie('user-id','123',max_age=85)
-    #return response
-
-data = {
-    "Name":"Prathi",
-    'status':"success"
-}
-response = JsonResponse(data)
-
+@login_required
+def template(request):
+    new_list=["apple","mango","grapes"]
+    new_dict={
+        "name":"prathi",
+        "age":22
+    }
+    username = request.user.username
+    return render(request,'index.html',{'username':username,'new_list':new_list, 'new_dict':new_dict})
