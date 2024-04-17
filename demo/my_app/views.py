@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
+from django.core.cache import cache
 
 
 # Create your views here.
@@ -25,5 +26,8 @@ def template(request):
         "name":"prathi",
         "age":22
     }
+    items=["grapes","orange","guava"]
     username = request.user.username
-    return render(request,'index.html',{'username':username,'new_list':new_list, 'new_dict':new_dict})
+    return render(request,'index.html',{'username':username,'new_list':new_list, 'new_dict':new_dict,'items':items})
+
+

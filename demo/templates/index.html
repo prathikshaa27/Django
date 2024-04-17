@@ -1,3 +1,4 @@
+{% load cache %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,13 +20,67 @@
         {% endif %}
         <br>
 
-        {{'prathi'|escape}}
-        {{'prathi'|escapejs}}
-        {{new_list|first}}
+        {{'prathi'|escape|linebreaks}}
+        {{'prathi'|escapejs|linebreaks}}
+        {{new_list|first|linebreaks}}
         {{11.1|floatformat:1}}
-        {{112|get_digit:1}}
-        {{new_dict|dictsort:"name"}}
+        {{112|get_digit:1|linebreaks}}
+        {{new_dict|dictsort:"name"|linebreaks}}
+        {{new_list|last}}
+        {{new_list|join:","}}
+        {{"prathikshaa"|length}}
+        {{"PRATHI"|lower}}
+        {{"prathi"|urlencode}}
+
+        {% if new_list|length_is:3 %}
+        The list contains 3 items
+        {% endif %}
+        {{"hello this is prathi"|linebreaks}}
+        {{"Iam from coimbatore"|linebreaksbr}}
+        {{"Mango"|linenumbers}}
+        {{"Notebook"|ljust:10|linebreaks}}
+        {{"message"|make_list}}
+        {{"phonenumber"|phone2numeric|linebreaks}}
+        {{new_dict|pprint|linebreaks}}
+        {% with num_books=1 %}
+        I have {{num_books}} book{{num_books|pluralize|linebreaks}}
+        {% endwith %}
+
+        {% with new_list|random as random_item %}
+        Random Item:{{random_item}}
+        {% endwith %}
+
+        {{10|rjust:30}}
+        {{"One Indian Girl"|slugify|linebreaks}}
+        {{"09:39"|time:"H:i:s"}}
+        {{"chetan bhagat"|title|linebreaks}}
+        {{"prathikshaa"|truncatechars:5|linebreaks}}
+        {{"The largest highway is from varanasi to kanyakumari"|truncatewords:3}}
+        {{"Aspire Systems"|slice:"3"|linebreaks}}
+        {{"<p>Hello</p>"|striptags}}
+
+        {{new_list|unordered_list}}
+        {{"https://docs.djangoproject.com/en/3.1/ref/templates/builtins/"|urlize|linebreaks}}
+        {{18|yesno:"Yes, No ,Maybe"|linebreaks}}
+        {{"prathi hello "|wordcount}}
+        {{"Hello World"|urlencode|linebreaks}}
+        {{"<p>The largest river is Ganges</p>"|truncatewords_html:3}}
         
+        {% for item in items %}
+        <li>{{item}}</li>
+        {% endfor %}
+
+        {% cache 500 sidebar %}
+        <div>
+            {% for item in new_list %}
+            <p>{{item}}</p>
+            {% endfor %}
+
+        </div>
+        {% endcache %}
+
+   
+
 
 
 
