@@ -1,7 +1,12 @@
 from rest_framework import serializers
-from .models import Details
+from drf.models import Student
 
-class DetailsSerializer(serializers.ModelSerializer):
+class StudentSerializer(serializers.Serializer):
+    id = serializers.IntegerField()
+    name = serializers.CharField(max_length=100)
+    rollno = serializers.CharField(max_length=100)
+    
+    
     class Meta:
-        model = Details
-        fields=['name','gender']
+        model = Student
+        fields = "__all__" 

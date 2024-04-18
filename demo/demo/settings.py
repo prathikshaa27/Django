@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "articles",
     "forms",
     "userdetails",
+    "drf",
     
 
 ]
@@ -62,7 +63,10 @@ ROOT_URLCONF = "demo.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR,'templates')],
+        "DIRS": [
+            os.path.join(BASE_DIR, 'templates'),  # Add your project's template directory
+            os.path.join(BASE_DIR, 'templates'),  # Add path to DRF templates
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -74,6 +78,12 @@ TEMPLATES = [
         },
     },
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    )
+}
 
 WSGI_APPLICATION = "demo.wsgi.application"
 
@@ -141,3 +151,5 @@ os.path.join(BASE_DIR,'assets')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+    

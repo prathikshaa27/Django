@@ -23,7 +23,8 @@ urlpatterns = [
     path('',include('my_app.urls')),
     path("admin/", admin.site.urls),
     path("articles/", include('articles.urls')),
-    path('',include('forms.urls'))
+    path('',include('forms.urls')),
+    path('',include('drf.urls')),
     
 ] 
 
